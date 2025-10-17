@@ -1,7 +1,6 @@
 #include "../../include/modular.h"
 #include "../../include/euclides.h"
 #include "../../include/ehprimo.h"
-#include "../../include/phi.h"
 #include <stdio.h>
 
 long long expoente_modular(long long base, long long exp, long long mod){
@@ -48,7 +47,9 @@ long long aplicar_teorema_modular(long long base, long long exp, long long mod, 
         
         // USA O PHI PRÉ-CALCULADO! MUITO MAIS RÁPIDO!
         long long redutor = phi_de_n;
+        printf("Phi(n): %lld\n", phi_de_n);
         exp_reduzido = exp % redutor;
+        printf("Expoente Reduzido: %lld\n", exp_reduzido);
     }
     // 3. Nenhuma redução possível
     else {

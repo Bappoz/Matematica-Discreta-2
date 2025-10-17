@@ -16,7 +16,6 @@ gcc -Wall -Wextra -std=c11 -I"include" ^
 	src\tools\chave_acesso.c ^
 	src\tools\utils\efeito_hacker.c ^
 	src\tools\utils\ehprimo.c ^
-	src\tools\utils\phi.c ^
 	-o src\bin\programa_rsa.exe -lm
 
 if %ERRORLEVEL% NEQ 0 (

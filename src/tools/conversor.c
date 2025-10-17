@@ -2,7 +2,6 @@
 #include "../../include/modular.h"
 #include "../../include/euclides.h"
 #include "../../include/ehprimo.h"
-#include "../../include/phi.h"
 #include "../../include/efeito_hacker.h"
 #include <stdio.h>
 #include <string.h>

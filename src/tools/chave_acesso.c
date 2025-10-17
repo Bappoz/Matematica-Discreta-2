@@ -1,5 +1,4 @@
 #include "../../include/chave_acesso.h"
-#include "../../include/phi.h"
 #include "../../include/euclides.h"
 #include "../../include/ehprimo.h"
 #include <stdio.h>
@@ -8,6 +7,14 @@
 long long gerar_chaves(long long p, long long q, long long *n_ptr, long long *e_ptr, long long *d_ptr){
     if(!ehPrimo(p) || !ehPrimo(q)){
         printf("Erro: p e q devem ser números primos distintos.\n");
+        return 0;
+    }
+    if (p == q) {
+        printf("Erro: p e q devem ser primos distintos (p != q).\n");
+        return 0;
+    }
+    if (p <= 2 || q <= 2) {
+        printf("Erro: p e q devem ser primos maiores que 2.\n");
         return 0;
     }
     long long n = p*q;

@@ -11,6 +11,8 @@
 #include "../../include/conversor.h"
 #include "../../include/modular.h"
 #include "../../include/efeito_hacker.h"
+#include "../../include/ehprimo.h"
+#include "../../include/euclides.h"
 // Os outros (.h de euclides, phi, ehprimo) já devem ser incluídos dentro desses
 
 int main() {
@@ -19,7 +21,22 @@ int main() {
     printf("     ETAPA 1: Fatoracao com Metodo Rho de Pollard\n");
     printf("====================================================\n\n");
     
-    long long N1 = 8051, N2 = 2021; // Valores de exemplo
+    long long N1, N2;
+    /* Ler N1 e N2 do usuário de forma segura */
+    char buf[128];
+    printf("N1: ");
+    if (fgets(buf, sizeof(buf), stdin) == NULL) {
+        fprintf(stderr, "Entrada inválida para N1\n");
+        return 1;
+    }
+    N1 = strtoll(buf, NULL, 10);
+
+    printf("N2: ");
+    if (fgets(buf, sizeof(buf), stdin) == NULL) {
+        fprintf(stderr, "Entrada inválida para N2\n");
+        return 1;
+    }
+    N2 = strtoll(buf, NULL, 10);
     // (Aqui você pode colocar o código que pede para o usuário digitar N1 e N2)
     
     printf("Fatorando N1 = %lld...\n", N1);
@@ -30,6 +47,10 @@ int main() {
 
     if (p == -1 || q == -1) {
         printf("Falha na fatoracao. Encerrando.\n");
+        return 1;
+    }
+    if (!ehPrimo(p) || !ehPrimo(q) || p==q || p<=2 || q<=2) {
+        fprintf(stderr, "Pares invalidos: p=%lld, q=%lld. Use primos distintos e maiores que 2.\n", p, q);
         return 1;
     }
 
@@ -62,11 +83,45 @@ int main() {
     printf("      ETAPA 3: Criptografia e Decodificacao\n");
     printf("====================================================\n\n");
 
-    const char *mensagem = "SECRETO";
-    printf("Mensagem Original: '%s'\n\n", mensagem);
+    char mensagem[300];
+    printf("Digite uma frase para criptografar: ");
+    if (fgets(mensagem, sizeof(mensagem), stdin) == NULL) {
+        fprintf(stderr, "Erro ao ler a mensagem\n");
+        return 1;
+    }
+    // remover newline final, se houver 
+    size_t len = strlen(mensagem);
+    if (len > 0 && mensagem[len-1] == '\n') mensagem[len-1] = '\0';
 
     // 1. Codificar texto para blocos (usando conversor.c)
     BlocoDados blocos_originais = codificar(mensagem);
+    /* Validações: garantir que n é grande o suficiente para representar todos os blocos */
+    if (blocos_originais.dados == NULL || blocos_originais.tamanho == 0) {
+        fprintf(stderr, "Erro: mensagem vazia ou codificacao falhou.\n");
+        return 1;
+    }
+
+    long long max_block = 0;
+    for (size_t i = 0; i < blocos_originais.tamanho; i++) {
+        if (blocos_originais.dados[i] > max_block) max_block = blocos_originais.dados[i];
+    }
+    if (n <= max_block) {
+        fprintf(stderr, "Erro: n = %lld eh pequeno demais para a mensagem (maior bloco = %lld).\n", n, max_block);
+        fprintf(stderr, "Solucao: use primos p,q maiores (ou mude o esquema de codificacao).\n");
+        free(blocos_originais.dados);
+        return 1;
+    }
+
+    if (phi_n <= 1) {
+        fprintf(stderr, "Erro: phi(n) = %lld inválido. Verifique p e q.\n", phi_n);
+        free(blocos_originais.dados);
+        return 1;
+    }
+    if (mdc(e, phi_n) != 1) {
+        fprintf(stderr, "Erro: e=%lld não é coprimo com phi(n)=%lld.\n", e, phi_n);
+        free(blocos_originais.dados);
+        return 1;
+    }
     
     // 2. Criptografar cada bloco (usando modular.c)
     printf("--- Criptografando ---\n");
