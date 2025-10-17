@@ -24,6 +24,6 @@ long long gerar_chaves(long long p, long long q, long long *n_ptr, long long *e_
     *e_ptr = e;
     *d_ptr = d;
 
-    return 0;
+    return 1; /* sucesso */
 
 }

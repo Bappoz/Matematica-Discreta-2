@@ -3,10 +3,11 @@
 
 // Implementação simples do algoritmo de Euclides
 int mdc(int a, int b) {
+    //printf("\n Resolvendo MDC: \n");
     while (b != 0) {
         int resto = a % b;
-        int quociente = a / b;
-        printf("%d = %d*(%d) + %d\n", a, b, quociente, resto);
+        //int quociente = a / b;
+        //printf("%d = %d*(%d) + %d\n\n", a, b, quociente, resto);
         a = b;
         b = resto;
     }
