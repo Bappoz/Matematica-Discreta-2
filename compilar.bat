@@ -23,6 +23,6 @@ if %ERRORLEVEL% NEQ 0 (
 	echo Erro na compilacao.
 ) ELSE (
 	echo Compilacao concluida!
-	echo Para executar, abra o terminal e digite: src\bin\programa_rsa.exe
+	echo Para executar, abra o terminal e digite: ./src/bin/programa_rsa.exe
 )
 pause

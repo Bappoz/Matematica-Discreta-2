@@ -24,7 +24,7 @@ Existem duas formas de compilar o projeto. A primeira é a preferencial.
     2. Depois, execute: ./compilar.sh
 
 * **No Windows:**
-    Simplesmente dê um duplo-clique no arquivo `compilar.bat`.
+    ./compilar.bat
 
 ---------------------------------------------------
  COMO EXECUTAR O PROGRAMA
@@ -35,5 +35,5 @@ Após a compilação, um executável será criado na pasta 'bin'.
 1. Abra um terminal.
 2. Digite o seguinte comando e pressione Enter:
 
-   * No Linux/macOS: ./bin/programa_rsa
-   * No Windows:      bin\programa_rsa.exe
+   * No Linux/macOS: ./src/bin/programa_rsa
+   * No Windows:      ./src/bin\programa_rsa.exe
