@@ -35,12 +35,6 @@ Windows (CMD/PowerShell):
 ./compilar.bat
 ```
 
-E depois:
-
-```
-./src/bin/programa_rsa.exe
-```
-
 --------------------------------------------------------------------
 
 Git Bash / Linux:
