@@ -2,5 +2,8 @@
 #define RSA_H
 
 
+long long criptografia();
+
+
 
 #endif

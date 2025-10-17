@@ -5,7 +5,7 @@
 long long phi(long long mod){
     long long resultado = mod;
 
-    for (long long i = 2; i * i < mod; i++){
+    for (long long i = 2; i * i <= mod; i++){
 
         if(mod % i == 0){
             resultado = resultado - resultado / i; 
@@ -18,6 +18,5 @@ long long phi(long long mod){
     // Para quando mod tiver um fator primo maior que a raiz quadrade
     if(mod > 1) resultado = resultado - resultado/mod;
 
-    printf("%lld", resultado);
     return resultado;
 }

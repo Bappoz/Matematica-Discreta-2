@@ -22,6 +22,8 @@ long long expoente_modular(long long base, long long exp, long long mod){
     return resultado_mod;
 }
 
+
+
 long long aplicar_teorema_modular(long long base, long long exp, long long mod){
     if(mod == 0) return 0;
 
@@ -44,13 +46,3 @@ long long aplicar_teorema_modular(long long base, long long exp, long long mod){
     return expoente_modular(base, exp_reduzido, mod);
 }
 
-int main(){
-    long long base = 3;
-    long long exp = 87654321;
-    long long mod = 13;
-    
-    long long result_mod = aplicar_teorema_modular(base, exp, mod);
-
-
-    return 0;
-}

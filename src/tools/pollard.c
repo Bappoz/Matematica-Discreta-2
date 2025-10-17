@@ -40,10 +40,4 @@ int pollard(int n){
     return d;
 }
 
-int main(){
-    int n = 8051;
-    int fator = pollard(n);
-    printf("Fator: %d\n", fator);
 
-    return 0;
-}

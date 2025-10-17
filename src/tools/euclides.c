@@ -34,7 +34,7 @@ int inverso_modular(int a, int mod){
         return -1;
     }
 
-    if ( x1 < 0) x1 += mod;
+    if ( x1 < 0 ) x1 += mod;
     return x1;
 
 }
