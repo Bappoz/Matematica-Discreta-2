@@ -76,61 +76,9 @@ Se alguma dessas validações falhar o programa aborta com uma mensagem indicand
 - Se você fornecer N1=100 e N2=102, o Pollard Rho retorna fatores triviais (2), ou p=q=2, o que resulta em `phi(n)=1` e `n=4`. Isso quebra o esquema RSA aqui (expoente reduzido vira 0, informação se perde) — por isso o programa rejeita esses casos.
 - Se `n <= maior_bloco` (por exemplo n=21 e um bloco = 25) a criptografia perde informação e a decodificação produzirá caracteres inválidos (`?`). Por isso há validação antes da criptografia.
 
-## O que falta / próximos passos
-
-- Implementar as outras questões do enunciado (atualmente apenas Questão 1 está pronta).
-- Melhorar robustez do Pollard: tentar múltiplas seeds/constantes `c` em caso de falha.
-- Adicionar testes unitários para `mdc`, `inverso_modular`, `ehPrimo` e `pollard`.
-- Tornar logs/verbosity configuráveis (modo quiet/verbose).
-- Opcional: empacotar múltiplos caracteres por bloco para suportar n menores (requer mudança no codificador/decodificador).
-
-## Contribuições
-
-Se você for colaborar, prefira:
-
-- Abrir uma branch por tópico/questão.
-- Testar localmente com `compilar.bat` e, se usar `git`, atualizar `.gitignore` para não comitar `src/bin`.
-
-## Contato / notas finais
-
-# Este README serve como documentação inicial. Se quiser que eu adicione exemplos de execução, ou gere um `Makefile` alternativo, diga qual formato prefere (Windows, Linux, WSL) e adapto.
 
 # PROJETO DE CRIPTOGRAFIA RSA
 
 Aluno: Lucas Andrade Zanetti
 Matrícula: 241039645
 Curso: Engenharia de Software - FCTE
-
----
-
-## COMO COMPILAR E EXECUTAR
-
-Existem duas formas de compilar o projeto. A primeira é a preferencial.
-
-**MÉTODO 1: Usando Make (Preferencial para Linux, macOS e ambientes de desenvolvimento no Windows)**
-
-1. Abra um terminal na pasta raiz do projeto.
-2. Digite o seguinte comando e pressione Enter:
-   make
-
-**MÉTODO 2: Usando Scripts (Alternativa Simples)**
-
-- **No Linux ou macOS:**
-
-  1. Abra um terminal e execute o comando: chmod +x compilar.sh
-  2. Depois, execute: ./compilar.sh
-
-- **No Windows:**
-  ./compilar.bat
-
----
-
-## COMO EXECUTAR O PROGRAMA
-
-Após a compilação, um executável será criado na pasta 'bin'.
-
-1. Abra um terminal.
-2. Digite o seguinte comando e pressione Enter:
-
-   - No Linux/macOS: ./src/bin/programa_rsa
-   - No Windows: ./src/bin\programa_rsa.exe
