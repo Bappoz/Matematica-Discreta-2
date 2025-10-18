@@ -6,6 +6,7 @@
 
 
 // Multiplicação modular segura para evitar overflow em 64-bit
+// Utilizado simplesmente para evitar bugs de overflow, possibilitando números extremamente grandes
 static long long mul_mod(long long a, long long b, long long mod){
     unsigned long long ua = (unsigned long long)((a % mod + mod) % mod);
     unsigned long long ub = (unsigned long long)((b % mod + mod) % mod);
@@ -27,7 +28,7 @@ long long int g(long long x, long long n){
 }
 
 
-int pollard(int n){
+long pollard(long n){
     if (n % 2 == 0) return 2;
 
     long long x = 2; long long int y = 2;

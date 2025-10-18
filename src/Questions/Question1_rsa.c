@@ -1,11 +1,3 @@
-#include <stdio.h>
-#include <string.h>
-#include <ctype.h>
-#include <stdlib.h>
-#include <time.h>
-
-
-// Inclua os headers de TODAS as suas partes
 #include "../../include/pollard.h"
 #include "../../include/chave_acesso.h"
 #include "../../include/conversor.h"
@@ -13,7 +5,11 @@
 #include "../../include/efeito_hacker.h"
 #include "../../include/ehprimo.h"
 #include "../../include/euclides.h"
-// Os outros (.h de euclides, phi, ehprimo) já devem ser incluídos dentro desses
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
+#include <time.h>
 
 int main() {
     // --- ETAPA 1: FATORAÇÃO (O Criptoanalista) ---
@@ -153,7 +149,7 @@ int main() {
     char* mensagem_final = decodificar(blocos_para_texto);
 
     printf("\n--- RESULTADO FINAL ---\n");
-    printf("Mensagem Decodificada: '%s'\n", mensagem_final);
+    printf("Mensagem Decodificada: %s\n", mensagem_final);
     printf("====================================================\n");
 
     // Limpeza da memória

@@ -55,10 +55,40 @@ Depois de compilado, execute o programa gerado:
 ./src/bin/programa_rsa.exe
 ```
 
-O programa pedirá dois números (N1 e N2) e uma mensagem para criptografar. Ele executa três etapas:
 
 1. Fatoração de N1 e N2 com Pollard Rho — o objetivo é obter p (fator de N1) e q (fator de N2).
+
+O programa pedirá dois números (N1 e N2) e uma mensagem para criptografar. Ele executa três etapas:
+    
+Critérios:
+- Cada número deve ser composto (não primo).
+- Os fatores primos devem ser distintos.
+- Os números devem estar entre 100 e 9999.
+
+Exemplos funcionais e corretos de N1 e N2 para fins de teste:
+```
+- ( N1 = 221 ) (fatores: ( 13 \times 17 ))
+- ( N2 = 899 ) (fatores: ( 29 \times 31 ))
+
+- ( N1 = 143 ) (fatores: ( 11 \times 13 ))
+- ( N2 = 437 ) (fatores: ( 19 \times 23 ))
+
+- ( N1 = 667 ) (fatores: ( 23 \times 29 ))
+- ( N2 = 8999 ) (fatores: ( 89 \times 101 ))
+
+- ( N1 = 1001 ) (fatores: ( 7 \times 11 \times 13 ))
+- ( N2 = 3087 ) (fatores: ( 3 \times 29 \times 37 ))
+
+- ( N1 = 2021 ) (fatores: ( 43 \times 47 ))
+- ( N2 = 7429 ) (fatores: ( 61 \times 73 ))
+```
+
 2. Geração de chaves RSA a partir de p e q (e = 65537, d calculado pelo inverso modular).
+
+```
+Foi definido 'e' como 65537 devido um padrão industrial para esse valor, o qual oferece segurança e uma grande eficiência em criptografia.
+```
+
 3. Codificação da mensagem em blocos, criptografia e decodificação para verificar o processo.
 
 ## Regras / Validações que o programa aplica (importante)

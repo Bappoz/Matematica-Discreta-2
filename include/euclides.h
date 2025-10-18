@@ -2,13 +2,13 @@
 #define EUCLIDES_H
 
 // MDC entre dois valores
-int mdc(int a, int b);
+long long mdc(long a, long long b);
 
 // Mdc estendido de euclides para achar o x e y
-int mdc_estendido(int a, int b, int *x, int *y);
+long long mdc_estendido(long long a, long long b, long long *x, long long *y);
 
 //Retorna o inverso modular nos casos de divisão
-int inverso_modular(int a, int mod);
+long long inverso_modular(long long a, long long mod);
 
 
 
