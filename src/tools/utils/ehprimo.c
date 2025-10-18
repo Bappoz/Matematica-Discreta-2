@@ -1,3 +1,12 @@
+/*
+ * Aluno: Lucas Andrade Zanetti
+ * Matrícula: 241039645
+ * Disciplina: Matemática Discreta II
+ * Professor: Cristiane Loesch de Souza Costa
+ *
+ * Arquivo .c usado para verificar se tal número n é primo
+ */
+
 #include "../../../include/ehprimo.h"
 #include <stdio.h>
 #include <stdbool.h>

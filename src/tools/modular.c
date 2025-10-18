@@ -1,3 +1,12 @@
+/*
+ * Aluno: Lucas Andrade Zanetti
+ * Matrícula: 241039645
+ * Disciplina: Matemática Discreta II
+ * Professor: Cristiane Loesch de Souza Costa
+ *
+ * Arquivo .c resposável pelas lógicas de exponenciação modular
+ */
+
 #include "../../include/modular.h"
 #include "../../include/euclides.h"
 #include "../../include/ehprimo.h"
@@ -16,6 +25,7 @@ long long expoente_modular(long long base, long long exp, long long mod){
 
         exp = exp / 2;
         base = (base * base) % mod;
+
     }
     printf("\n");
     printf("O resto do %lld^%lld no mod(%lld)= %lld\n", base_fixa, exp_fixo, mod, resultado_mod);

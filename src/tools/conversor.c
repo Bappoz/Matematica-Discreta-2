@@ -1,3 +1,12 @@
+/*
+ * Aluno: Lucas Andrade Zanetti
+ * Matrícula: 241039645
+ * Disciplina: Matemática Discreta II
+ * Professor: Cristiane Loesch de Souza Costa
+ *
+ * Arquivo .c responsável por converter uma string em número (codificar) e fazer o processo oposto (Decodificar)
+ */
+
 #include "../../include/conversor.h"
 #include "../../include/modular.h"
 #include "../../include/euclides.h"

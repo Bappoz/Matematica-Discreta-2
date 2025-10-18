@@ -1,3 +1,12 @@
+/*
+ * Aluno: Lucas Andrade Zanetti
+ * Matrícula: 241039645
+ * Disciplina: Matemática Discreta II
+ * Professor: Cristiane Loesch de Souza Costa
+ *
+ * Arquivo .c usado para gerar as chaves a partir de p e q
+ */
+
 #include "../../include/chave_acesso.h"
 #include "../../include/euclides.h"
 #include "../../include/ehprimo.h"

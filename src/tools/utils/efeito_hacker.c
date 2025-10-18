@@ -1,3 +1,12 @@
+/*
+ * Aluno: Lucas Andrade Zanetti
+ * Matrícula: 241039645
+ * Disciplina: Matemática Discreta II
+ * Professor: Cristiane Loesch de Souza Costa
+ *
+ * Função auxiliar: Dá um efeito de hacker/criptografia (Para diversão)
+ */
+
 #include "../../../include/efeito_hacker.h"
 #include <stdio.h>
 #include <string.h>

@@ -1,3 +1,12 @@
+/*
+ * Aluno: Lucas Andrade Zanetti
+ * Matrícula: 241039645
+ * Disciplina: Matemática Discreta II
+ * Professor: Cristiane Loesch de Souza Costa
+ *
+ * Arquivo .c resposável pelas funções relacionadas a lógica euclidiana: mdc, mdc_estendido, inverso_modular e mmc
+ */
+
 #include "../../include/euclides.h"   
 #include <stdio.h>      
 

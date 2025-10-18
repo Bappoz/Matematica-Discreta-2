@@ -1,3 +1,12 @@
+/*
+ * Aluno: Lucas Andrade Zanetti
+ * Matrícula: 241039645
+ * Disciplina: Matemática Discreta II
+ * Professor: Cristiane Loesch de Souza Costa
+ *
+ * Arquivo .c resposável pela lógica de fatoração em primos por meio de pollard
+ */
+
 #include "../../include/pollard.h"
 #include "../../include/euclides.h"
 #include "../../include/ehprimo.h"
