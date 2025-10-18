@@ -9,6 +9,8 @@ Este repositório contém implementações em C para as principais questões de 
 - **Linux/Git Bash:**
   - Execute `./compilar.sh` ou `make`. Ambos permitem escolher a questão pelo terminal, de forma semelhante ao `.bat`.
 - Os scripts compilam e executam apenas o exercício selecionado, facilitando testes, organização e correção.
+- **Caso Esteja usando terminal bash no Windows**
+  - Na raiz do projeto execute `./compilar.bat` no terminal. O script perguntará qual questão deseja compilar (1, 2, 3 ou 4). Basta digitar o número e o programa correspondente será compilado e executado automaticamente.
 
 ## O que faz cada questão
 
