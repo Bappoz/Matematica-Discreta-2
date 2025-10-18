@@ -18,18 +18,20 @@ long long expoente_modular(long long base, long long exp, long long mod){
     long long exp_fixo = exp;
     long long base_fixa = base;
     base %= mod;
-
+    printf("[Expoente Modular] calculando %lld^%lld (mod %lld) passo a passo\n", base_fixa, exp_fixo, mod);
+    int passo = 0;
     while(exp > 0){
-
-        if (exp % 2 == 1) resultado_mod = (resultado_mod * base) % mod;
-
-        exp = exp / 2;
+        passo++;
+        printf("  [passo %d] exp=%lld, resultado=%lld, base=%lld\n", passo, exp, resultado_mod, base);
+        if (exp & 1) {
+            resultado_mod = (resultado_mod * base) % mod;
+            printf("    -> multiplica: resultado = (resultado * base) %% mod = %lld\n", resultado_mod);
+        }
+        exp >>= 1;
         base = (base * base) % mod;
-
+        printf("    -> quadrado base: base = base^2 %% mod = %lld\n", base);
     }
-    printf("\n");
-    printf("O resto do %lld^%lld no mod(%lld)= %lld\n", base_fixa, exp_fixo, mod, resultado_mod);
-    printf("\n");
+    printf("[Expoente Modular] Resultado final de %lld^%lld mod %lld = %lld\n", base_fixa, exp_fixo, mod, resultado_mod);
     return resultado_mod;
 }
 

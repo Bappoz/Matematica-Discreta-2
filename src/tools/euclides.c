@@ -15,23 +15,29 @@ long long mdc(long long a, long long b) {
     printf("[MDC] Calculando mdc(%lld, %lld)...\n", a, b);
     while (b != 0) {
         long long resto = a % b;
+        long long quociente = a / b;
+        /* imprimir a = b * quociente + resto antes de atualizar a e b */
+        printf("[MDC] %lld = %lld * %lld + %lld\n", a, b, quociente, resto);
         a = b;
         b = resto;
     }
-    printf("[MDC] Resultado: %lld\n", a);
+    printf("[MDC] Resultado: %lld\n\n", a);
     return a;
 }
 
 long long mdc_estendido(long long a, long long b, long long *x, long long *y){
+    printf("[MDC Estendido] Iniciando mdc_estendido(%lld, %lld)\n", a, b);
     if(b == 0){
         *x = 1;
         *y = 0;
+        printf("[MDC Estendido] base: retorna d=%lld, x=%lld, y=%lld\n", a, *x, *y);
         return a;
     }
     long long x1, y1;
     long long d = mdc_estendido(b, a % b, &x1, &y1);
     *x = y1;
     *y = x1 - (a/b) * y1;
+    printf("[MDC Estendido] passo: a=%lld, b=%lld -> d=%lld, x=%lld, y=%lld\n", a, b, d, *x, *y);
     return d;
 }
 
@@ -51,6 +57,9 @@ long long inverso_modular(long long a, long long mod){
 
 long long mmc(long long a, long long b){
     if(a == 0 || b == 0)return 0;
-    return ((a*b)/mdc(a, b));
+    long long g = mdc(a, b);
+    long long result = (a / g) * b; // evita overflow
+    printf("[MMC] mmc(%lld, %lld) = (a/g)*b = (%lld/%lld)*%lld = %lld\n", a, b, a, g, b, result);
+    return result;
 }
 

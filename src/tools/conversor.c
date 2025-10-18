@@ -27,7 +27,7 @@ BlocoDados codificar(const char *mensagem) {
 
     size_t contador_de_blocos = 0;
 
-    for (size_t i = 0; i < len; i++) {
+        for (size_t i = 0; i < len; i++) {
         char caracter = mensagem[i];
         int codigo = -1; // Inicia com valor inválido
 
@@ -38,8 +38,9 @@ BlocoDados codificar(const char *mensagem) {
         }
 
         // Se o caractere for válido, adicione seu código como um novo bloco.
-        if (codigo != -1) {
-            blocos[contador_de_blocos++] = (long long)codigo;
+            if (codigo != -1) {
+                blocos[contador_de_blocos++] = (long long)codigo;
+                printf("[Codificar] char='%c' -> codigo=%d (bloco %zu)\n", caracter, codigo, contador_de_blocos-1);
         }
         // Ignora outros caracteres (pontuação, etc.)
     }
@@ -58,12 +59,16 @@ char* decodificar(BlocoDados blocos) {
         long long bloco = blocos.dados[i]; // Bloco é o próprio código
         int codigo = (int)bloco;
 
+            printf("[Decodificar] bloco %zu = %lld -> ", i, bloco);
         if (codigo == 0) {
             mensagem[i] = ' ';
+                printf("' ' (espaco)\n");
         } else if (codigo >= 11 && codigo <= 36) {
             mensagem[i] = (char)(codigo - 11 + 'A');
+                printf("'%c'\n", mensagem[i]);
         } else {
             mensagem[i] = '?'; // Caractere para código inválido
+                printf("'?' (codigo invalido)\n");
         }
     }
 
