@@ -1,13 +1,37 @@
 #!/bin/bash
-# Script de compilação para Linux e macOS
+echo "Qual exercicio voce quer compilar?"
+echo "1 - Question1_rsa"
+echo "2 - Question2_chaves"
+echo "3 - Question3_algo"
+read -p "Digite o numero: " escolha
 
-echo "Compilando o projeto RSA..."
+if [ "$escolha" = "1" ]; then
+    gcc src/Questions/Question1_rsa.c src/tools/pollard.c src/tools/euclides.c src/tools/conversor.c src/tools/modular.c src/tools/utils/efeito_hacker.c src/tools/utils/ehprimo.c src/tools/chave_acesso.c -o src/bin/rsa
+    if [ $? -ne 0 ]; then
+        echo "Erro na compilacao."
+    else
+        echo "Compilacao concluida!"
+        echo "Para executar, digite: ./src/bin/rsa"
+    fi
 
-# Cria o diretório bin se ele não existir
-mkdir -p src/bin
+elif [ "$escolha" = "2" ]; then
+    gcc src/Questions/Question2_chaves.c src/tools/euclides.c -o src/bin/chaves_periodicas
+    if [ $? -ne 0 ]; then
+        echo "Erro na compilacao."
+    else
+        echo "Compilacao concluida!"
+        echo "Para executar, digite: ./src/bin/chaves_periodicas"
+    fi
 
-# Comando de compilação
-gcc src/tools/pollard.c src/Questions/Question1_rsa src/tools/modular.c src/tools/euclides.c src/tools/conversor.c src/tools/chave_acesso.c src/tools/utils/efeito_hacker.c src/tools/utils/ehprimo.c  -o src/bin/programa_rsa.exe -lm
+elif [ "$escolha" = "3" ]; then
+    gcc src/Questions/Question3_algo.c ... -o src/bin/algo
+    if [ $? -ne 0 ]; then
+        echo "Erro na compilacao."
+    else
+        echo "Compilacao concluida!"
+        echo "Para executar, digite: ./src/bin/algo"
+    fi
 
-echo "Compilacao concluida!"
-echo "Para executar, digite: ./src/bin/programa_rsa"
+else
+    echo "Opcao invalida!"
+fi

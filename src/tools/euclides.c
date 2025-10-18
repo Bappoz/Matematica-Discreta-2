@@ -40,3 +40,8 @@ long long inverso_modular(long long a, long long mod){
 
 }
 
+long long mmc(long long a, long long b){
+    if(a == 0 || b == 0)return 0;
+    return ((a*b)/mdc(a, b));
+}
+

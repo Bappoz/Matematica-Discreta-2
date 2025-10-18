@@ -1,5 +1,6 @@
 #include "../../include/pollard.h"
 #include "../../include/euclides.h"
+#include "../../include/ehprimo.h"
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
@@ -28,11 +29,11 @@ long long int g(long long x, long long n){
 }
 
 
-long pollard(long n){
+long long pollard(long long n){
     if (n % 2 == 0) return 2;
 
-    long long x = 2; long long int y = 2;
-    long long int d = 1;
+    long long x = 2; long long y = 2;
+    long long d = 1;
     int contador = 1;
     printf("Iteracao |        x        |       y     |   |y - x|  | mdc(|y-x|, N)\n");
     printf("----------------------------------------------------------------------\n");
@@ -45,7 +46,7 @@ long pollard(long n){
         y = g(g(y, n), n);
         //printf("G(y) = %lld\n", y);
 
-    long long int diff = llabs(y - x);
+    long long diff = llabs(y - x);
         d = mdc(diff, n);
         printf("%8d | %15lld | %11lld | %10lld | %lld\n", contador, x, y, diff, d);
         printf("\n");
@@ -57,6 +58,13 @@ long pollard(long n){
             printf("Falha: O algoritmo encontrou o fator trivial %lld.\n", n);
             printf("Isso ocorre quando a semente (x0=2) e a funcao g(x) geram um ciclo azarado para este numero.\n");
         return -1;
+    }
+
+    while(!ehPrimo(d)){
+        printf("Fator encontrado (%lld) nao e primo. Fatorando novamente...\n", d);
+        long long novo = pollard(d);
+        if(novo == -1) return -1;
+        d = novo;
     }
 
     printf("----------------------------------------------------------------------\n");

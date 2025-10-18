@@ -1,6 +1,6 @@
 #ifndef POLLARD_H
 #define POLLARD_H
 
-long long pollard(int n);
+long long pollard(long long n);
 
 #endif 

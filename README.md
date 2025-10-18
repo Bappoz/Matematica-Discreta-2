@@ -73,14 +73,18 @@ Exemplos funcionais e corretos de N1 e N2 para fins de teste:
 - ( N1 = 143 ) (fatores: ( 11 \times 13 ))
 - ( N2 = 437 ) (fatores: ( 19 \times 23 ))
 
-- ( N1 = 667 ) (fatores: ( 23 \times 29 ))
-- ( N2 = 8999 ) (fatores: ( 89 \times 101 ))
-
-- ( N1 = 1001 ) (fatores: ( 7 \times 11 \times 13 ))
-- ( N2 = 3087 ) (fatores: ( 3 \times 29 \times 37 ))
-
 - ( N1 = 2021 ) (fatores: ( 43 \times 47 ))
 - ( N2 = 7429 ) (fatores: ( 61 \times 73 ))
+
+- ( N1 = 1001 ) 
+- ( N2 =  899 )
+
+- ( N1 = 1763 ) 
+- ( N2 = 2491 )
+
+- ( N1 = 323 ) 
+- ( N2 = 667 )
+
 ```
 
 2. Geração de chaves RSA a partir de p e q (e = 65537, d calculado pelo inverso modular).

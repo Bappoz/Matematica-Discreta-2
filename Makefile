@@ -1,32 +1,19 @@
+.PHONY: all rsa chaves algo clean
 
-CC = gcc
+all:
+    @echo "Use: make rsa | make chaves | make algo"
 
-CFLAGS = -g -Wall
-# -g -> Debug
-# -Wall -> Para mostrar todos os avisos
+rsa:
+    gcc src/Questions/Question1_rsa.c src/tools/pollard.c src/tools/euclides.c src/tools/conversor.c src/tools/modular.c src/tools/utils/efeito_hacker.c src/tools/utils/ehprimo.c src/tools/chave_acesso.c -o src/bin/rsa
+    @echo "Compilado: src/bin/rsa"
 
-BIN_DIR = src/bin
+chaves:
+    gcc src/Questions/Question2_chaves.c src/tools/euclides.c -o src/bin/chaves_periodicas
+    @echo "Compilado: src/bin/chaves_periodicas"
 
-EXEC = $(BIN_DIR)/programa_rsa
+algo:
+    gcc src/Questions/Question3_algo.c ... -o src/bin/algo
+    @echo "Compilado: src/bin/algo"
 
-# Find all .c sources under src/tools and src/Questions
-SRCS := $(shell find src -name '*.c' -print)
-
-OBJS = $(SRCS:.c=.o)
-
-INCLUDE_DIR = -Iinclude
-
-all: $(EXEC)
-
-$(EXEC): $(OBJS)
-	@mkdir -p $(BIN_DIR)
-	$(CC) $(CFLAGS) $(INCLUDE_DIR) $(SRCS) -o $(EXEC) -lm
-	@echo "Programa '$(EXEC)' compilado com sucesso"
-
-%.o: %.c
-	$(CC) $(CFLAGS) $(INCLUDE_DIR) -c $< -o $@
-
-# Limpar os arquivos gerados
 clean:
-	rm -f $(OBJS) $(EXEC)
-	@echo "Arquivos compilados foram removidos."
+    rm -f src/bin/rsa src/bin/chaves_periodicas src/bin/algo
