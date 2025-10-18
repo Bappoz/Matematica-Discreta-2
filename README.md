@@ -1,118 +1,76 @@
-# Projeto: Matemática Discreta 2 — Implementação (Questão 1)
+# Projeto: Matemática Discreta 2 — Implementação em C
 
-Este repositório contém implementações em C relacionadas ao enunciado da disciplina de Matemática Discreta 2. O objetivo é implementar ferramentas de criptografia/criptoanálise (RSA, Pollard Rho, operações modulares, etc.) organizadas em módulos reutilizáveis.
+Este repositório contém implementações em C para as principais questões de criptografia e aritmética da disciplina. O código é modular, com scripts interativos para compilar e rodar cada questão separadamente.
 
-ATENÇÃO: neste momento a implementação cobre apenas a Questão 1. As demais questões ainda serão adicionadas.
+## Como compilar e rodar
 
-## O que está implementado (estado atual)
+- **Windows:**
+  - Execute `compilar.bat` no terminal. O script perguntará qual questão deseja compilar (1, 2, 3 ou 4). Basta digitar o número e o programa correspondente será compilado e executado automaticamente.
+- **Linux/Git Bash:**
+  - Execute `./compilar.sh` ou `make`. Ambos permitem escolher a questão pelo terminal, de forma semelhante ao `.bat`.
+- Os scripts compilam e executam apenas o exercício selecionado, facilitando testes, organização e correção.
 
-- Etapa 1 — Fatoração usando o método Rho de Pollard (`src/tools/pollard.c`)
-- Etapa 2 — Geração de chaves RSA mínimas (`src/tools/chave_acesso.c`)
-- Etapa 3 — Criptografia / Decodificação de mensagens curtas (`src/tools/modular.c`, `src/tools/conversor.c`)
-- Utilitários: `euclides.c` (MDC e inverso modular), `ehprimo.c`, `efeito_hacker.c` (simula efeito visual), `conversor.c` (codifica/decodifica texto em blocos)
-- Script de compilação para Windows: `compilar.bat`
-- Makefile (Linux/Git Bash) atualizado para compilar todos os .c sob `src/`
+## O que faz cada questão
 
-### Arquivos principais
+### Questão 1 — RSA e Pollard Rho
 
-- `src/Questions/Question1_rsa.c` — programa principal que orquestra as 3 etapas (Fluxo para a Questão 1).
-- `src/tools/` — implementações das funções usadas (pollard, modular, euclides, etc.).
-- `include/` — headers públicos para os módulos.
+- Solicita dois números compostos N1 e N2 (entre 100 e 9999) e uma mensagem.
+- Fatora N1 e N2 usando o método de Pollard Rho (x₀ = 2, y₀ = 2, g(x) = x² + 1 mod n), exibindo as iterações essenciais.
+- Gera as chaves RSA (n, e, d) a partir dos primos encontrados.
+- Codifica, criptografa e decodifica a mensagem em blocos, mostrando o processo.
+- Prints mostram: iterações do Pollard, fatores, chaves e blocos.
 
-## Requisitos
+### Questão 2 — Ciclos e MMC
 
-- GCC (MinGW/MSYS2 em Windows, ou gcc no Linux). Certifique-se de que `gcc` esteja no PATH.
-- Make (opcional) se for compilar com `make` em ambientes que o suportem.
+- Recebe do usuário uma lista de ciclos periódicos (ex: 2, 4, 6, 8).
+- Calcula o ano de sincronização usando o MMC dos valores, mostrando o passo a passo do cálculo.
+- Exibe o resultado final e, se não houver ano possível dentro do limite, informa ao usuário.
 
-## Como compilar
+### Questão 3 — Eficiência de Algoritmos
 
-Windows (CMD/PowerShell):
+- Compara a eficiência de diferentes algoritmos de MDC (Euclides, subtração, etc.) e de exponenciação modular.
+- Mede e exibe o tempo de execução e o número de operações de cada método para diferentes entradas.
+- Ajuda a visualizar qual algoritmo é mais eficiente em cada situação.
 
-1. Abra um terminal na pasta do repositório.
-2. Execute:
+### Questão 4 — Resposta Objetiva
 
-```
-./compilar.bat
-```
+- A resposta objetiva e explicação detalhada da questão 4 está no arquivo [`docs/Q4_Answer.md`](docs/Q4_Answer.md).
+- Consulte esse arquivo para a justificativa teórica e exemplos.
 
---------------------------------------------------------------------
+## Exemplos de N1 e N2 para Questão 1
 
-Git Bash / Linux:
+| N1   | Fatores de N1 | N2   | Fatores de N2 |
+| ---- | ------------- | ---- | ------------- |
+| 221  | 13 × 17       | 899  | 29 × 31       |
+| 143  | 11 × 13       | 437  | 19 × 23       |
+| 323  | 17 × 19       | 667  | 23 × 29       |
+| 391  | 17 × 23       | 713  | 23 × 31       |
+| 2021 | 43 × 47       | 7429 | 61 × 73       |
 
-```
-./compilar.bat
-# ou, usando make (se disponível):
-# make
-```
+Evite números com mais de dois fatores primos (ex: 1001), pois o Pollard pode encontrar divisores compostos e o programa pode não funcionar como esperado.
 
-Nota: o `Makefile` também foi ajustado para incluir `-Iinclude` e compilar todos os `*.c` sob `src/` quando o `make` estiver disponível.
+## Organização dos arquivos
 
-## Como executar
+- `src/Questions/Question1_rsa.c` — RSA e Pollard Rho (fatoração, geração de chaves, criptografia)
+- `src/Questions/Question2_chaves.c` — MMC de ciclos periódicos
+- `src/Questions/Question3_eficiencia.c` — Eficiência de algoritmos
+- `src/Questions/Question4_bonus.c` — (se aplicável)
+- `src/tools/` — Funções auxiliares (fatoração, MDC, modular, primalidade, etc.)
+- `include/` — Headers dos módulos
+- `docs/Q4_Answer.md` — Resposta detalhada da questão 4
 
-Depois de compilado, execute o programa gerado:
+## Sobre os scripts de compilação
 
-```
-./src/bin/programa_rsa.exe
-```
+- **compilar.bat** (Windows): Pergunta qual questão deseja compilar/rodar. Compila apenas o arquivo necessário e executa o programa correspondente.
+- **compilar.sh** (Linux/Git Bash): Funciona de forma semelhante ao `.bat`, interativo e fácil de usar.
+- **Makefile**: Permite compilar cada questão individualmente com `make questao1`, `make questao2`, etc., ou todas de uma vez com `make all`.
 
+## Observações
 
-1. Fatoração de N1 e N2 com Pollard Rho — o objetivo é obter p (fator de N1) e q (fator de N2).
+- O código segue o roteiro da professora, com prints apenas do necessário para entendimento do processo.
+- Scripts de compilação permitem escolher facilmente qual questão compilar e rodar, tornando o uso prático e organizado.
+- Para dúvidas sobre a questão 4, consulte o arquivo `Q4_Answer.md`.
 
-O programa pedirá dois números (N1 e N2) e uma mensagem para criptografar. Ele executa três etapas:
-    
-Critérios:
-- Cada número deve ser composto (não primo).
-- Os fatores primos devem ser distintos.
-- Os números devem estar entre 100 e 9999.
+---
 
-Exemplos funcionais e corretos de N1 e N2 para fins de teste:
-```
-- ( N1 = 221 ) (fatores: ( 13 \times 17 ))
-- ( N2 = 899 ) (fatores: ( 29 \times 31 ))
-
-- ( N1 = 143 ) (fatores: ( 11 \times 13 ))
-- ( N2 = 437 ) (fatores: ( 19 \times 23 ))
-
-- ( N1 = 2021 ) (fatores: ( 43 \times 47 ))
-- ( N2 = 7429 ) (fatores: ( 61 \times 73 ))
-
-- ( N1 = 1001 ) 
-- ( N2 =  899 )
-
-- ( N1 = 1763 ) 
-- ( N2 = 2491 )
-
-- ( N1 = 323 ) 
-- ( N2 = 667 )
-
-```
-
-2. Geração de chaves RSA a partir de p e q (e = 65537, d calculado pelo inverso modular).
-
-```
-Foi definido 'e' como 65537 devido um padrão industrial para esse valor, o qual oferece segurança e uma grande eficiência em criptografia.
-```
-
-3. Codificação da mensagem em blocos, criptografia e decodificação para verificar o processo.
-
-## Regras / Validações que o programa aplica (importante)
-
-- Ambos os fatores resultantes p e q devem ser primos e distintos (p != q).
-- `p` e `q` devem ser maiores que 2 (o programa rejeita pares com 2).
-- `phi(n) = (p-1)*(q-1)` deve ser maior que 1.
-- `mdc(e, phi(n))` deve ser 1 (caso contrário o inverso modular não existe).
-- O módulo `n = p*q` deve ser maior que o maior bloco gerado pelo codificador. No esquema atual cada caractere é mapeado para um código entre 0 (espaço) e 36 (A..Z). Portanto, para mensagens simples de letras maiúsculas e espaços, é necessário `n > 36` (na prática use primos maiores para qualquer teste real).
-
-Se alguma dessas validações falhar o programa aborta com uma mensagem indicando o motivo.
-
-## Por que algumas entradas falham (exemplos e explicação)
-
-- Se você fornecer N1=100 e N2=102, o Pollard Rho retorna fatores triviais (2), ou p=q=2, o que resulta em `phi(n)=1` e `n=4`. Isso quebra o esquema RSA aqui (expoente reduzido vira 0, informação se perde) — por isso o programa rejeita esses casos.
-- Se `n <= maior_bloco` (por exemplo n=21 e um bloco = 25) a criptografia perde informação e a decodificação produzirá caracteres inválidos (`?`). Por isso há validação antes da criptografia.
-
-
-# PROJETO DE CRIPTOGRAFIA RSA
-
-Aluno: Lucas Andrade Zanetti
-Matrícula: 241039645
-Curso: Engenharia de Software - FCTE
+Aluno: Lucas Andrade Zanetti — Engenharia de Software - FCTE

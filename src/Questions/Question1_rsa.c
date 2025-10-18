@@ -1,3 +1,12 @@
+/*
+ * Aluno: Lucas Andrade Zanetti
+ * Matrícula: 241039645
+ * Disciplina: Matemática Discreta II
+ * Professor: Cristiane Loesch de Souza Costa
+ *
+ * Questão 01: Criptografia RSA
+ */
+
 #include "../../include/pollard.h"
 #include "../../include/chave_acesso.h"
 #include "../../include/conversor.h"

@@ -1,8 +1,9 @@
 @echo off
 echo Qual exercicio voce quer compilar?
-echo 1 - Question1_rsa
-echo 2 - Question2_chaves
-echo 3 - Question3_algo
+echo 1 - Question1_criptografia_rsa
+echo 2 - Question2_chaves_periodicas
+echo 3 - Question3_razao_de_eficiencia
+echo 4 - Question4_bonus
 echo .
 set /p escolha=Digite o numero: 
 echo.
@@ -31,18 +32,29 @@ if "%escolha%"=="1" (
 	)
 
 ) else if "%escolha%"=="3" (
-    gcc src\Questions\Question3_algo.c -o bin\eficiencia.exe
+    gcc src\Questions\Question3_eficiencia.c -o src\bin\eficiencia.exe
 	if %ERRORLEVEL% NEQ 0 (
 		echo Erro na compilacao.
 	) ELSE (
 		echo Compilacao concluida!Executando...
 		echo.
-		echo Inicializando Criptografia RSA
+		echo Inicializando Razao de Eficiencia
 		echo.
 		src\bin\eficiencia.exe
 	)
 
 
+) else if "%escolha%"=="4" (
+	gcc src\Questions\Question4_bonus.c -o src\bin\bonus.exe
+	if %ERRORLEVEL% NEQ 0 (
+		echo Erro na compilacao.
+	) ELSE (
+		echo Compilacao concluida!Executando...
+		echo.
+		echo Inicializando Questao bonus
+		echo.
+		src\bin\bonus.exe
+	)
 ) else (
     echo Opcao invalida!
 )

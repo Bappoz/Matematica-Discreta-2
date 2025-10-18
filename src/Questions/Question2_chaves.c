@@ -1,3 +1,12 @@
+/*
+ * Aluno: Lucas Andrade Zanetti
+ * Matrícula: 241039645
+ * Disciplina: Matemática Discreta II
+ * Professor: Cristiane Loesch de Souza Costa
+ *
+ * Questão 02: Chaves Periódicas
+ */
+
 #include "../../include/euclides.h"
 #include <stdio.h>
 

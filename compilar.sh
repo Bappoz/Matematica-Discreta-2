@@ -24,12 +24,21 @@ elif [ "$escolha" = "2" ]; then
     fi
 
 elif [ "$escolha" = "3" ]; then
-    gcc src/Questions/Question3_algo.c ... -o src/bin/algo
+    gcc src/Questions/Question3_eficiencia.c ... -o src/bin/eficiencia
     if [ $? -ne 0 ]; then
         echo "Erro na compilacao."
     else
         echo "Compilacao concluida!"
-        echo "Para executar, digite: ./src/bin/algo"
+        echo "Para executar, digite: ./src/bin/eficiencia"
+    fi
+
+elif [ "$escolha" = "4" ]; then
+    gcc src/Questions/Question4_bonus.c ... -o src/bin/bonus
+    if [ $? -ne 0 ]; then
+        echo "Erro na compilacao."
+    else
+        echo "Compilacao concluida!"
+        echo "Para executar, digite: ./src/bin/bonus"
     fi
 
 else

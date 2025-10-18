@@ -3,14 +3,13 @@
 
 // Implementação simples do algoritmo de Euclides
 long long mdc(long long a, long long b) {
-    //prlong longf("\n Resolvendo MDC: \n");
+    printf("[MDC] Calculando mdc(%lld, %lld)...\n", a, b);
     while (b != 0) {
         long long resto = a % b;
-        //long long quociente = a / b;
-        //print longf("%d = %d*(%d) + %d\n\n", a, b, quociente, resto);
         a = b;
         b = resto;
     }
+    printf("[MDC] Resultado: %lld\n", a);
     return a;
 }
 
@@ -28,14 +27,15 @@ long long mdc_estendido(long long a, long long b, long long *x, long long *y){
 }
 
 long long inverso_modular(long long a, long long mod){
+    printf("[Inverso Modular] Calculando inverso de %lld mod %lld...\n", a, mod);
     long long x1, y1;
     long long d = mdc_estendido(a, mod, &x1, &y1);
     if( d != 1){
-        printf("Não Existe inverso modular");
+        printf("[Inverso Modular] Nao existe inverso modular.\n");
         return -1;
     }
-
     if ( x1 < 0 ) x1 += mod;
+    printf("[Inverso Modular] Resultado: %lld\n", x1);
     return x1;
 
 }

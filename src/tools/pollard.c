@@ -38,14 +38,9 @@ long long pollard(long long n){
     printf("Iteracao |        x        |       y     |   |y - x|  | mdc(|y-x|, N)\n");
     printf("----------------------------------------------------------------------\n");
 
-    while(d == 1){  
-        //printf("X%d = %lld, Y%d = %lld\n\n", contador, x, contador, y);
-
+    while (d == 1) {
         x = g(x, n);
-        //printf("G(x) = %lld\n", x);
         y = g(g(y, n), n);
-        //printf("G(y) = %lld\n", y);
-
     long long diff = llabs(y - x);
         d = mdc(diff, n);
         printf("%8d | %15lld | %11lld | %10lld | %lld\n", contador, x, y, diff, d);
@@ -54,21 +49,18 @@ long long pollard(long long n){
     }
 
     if( d == n ){
-        printf("----------------------------------------------------------------------\n");
-            printf("Falha: O algoritmo encontrou o fator trivial %lld.\n", n);
-            printf("Isso ocorre quando a semente (x0=2) e a funcao g(x) geram um ciclo azarado para este numero.\n");
+        printf("[Pollard] Falha: ciclo azarado, fator trivial %lld.\n", n);
         return -1;
     }
 
-    while(!ehPrimo(d)){
-        printf("Fator encontrado (%lld) nao e primo. Fatorando novamente...\n", d);
+    while (!ehPrimo(d)) {
+        printf("[Pollard] Fator encontrado (%lld) nao e primo. Fatorando novamente...\n", d);
         long long novo = pollard(d);
-        if(novo == -1) return -1;
+        if (novo == -1) return -1;
         d = novo;
     }
 
-    printf("----------------------------------------------------------------------\n");
-    printf("O fator primo encontrado de acordo com o metodo de Pollard e: %lld\n", d);
+    printf("[Pollard] Fator primo encontrado: %lld\n", d);
     return (int)d;
 }
 
