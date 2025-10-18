@@ -89,7 +89,7 @@ int main() {
     printf("====================================================\n\n");
 
     char mensagem[300];
-    printf("Digite uma frase para criptografar: ");
+    printf("Digite uma frase para criptografar(Tudo Maisculo): ");
     if (fgets(mensagem, sizeof(mensagem), stdin) == NULL) {
         fprintf(stderr, "Erro ao ler a mensagem\n");
         return 1;
